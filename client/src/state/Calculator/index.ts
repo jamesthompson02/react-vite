@@ -50,6 +50,9 @@ const calculatorSlice = createSlice({
       if (result) {
         return { ...state, firstNumber: result, operator: payload };
       }
+      if (!result && !firstNumber) {
+        return { ...state, firstNumber: "0", operator: payload };
+      }
     },
     updateResult: (state) => {
       if (state.firstNumber && state.secondNumber && state.operator) {
